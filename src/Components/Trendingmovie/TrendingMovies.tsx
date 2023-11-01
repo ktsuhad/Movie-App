@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import TodayTrendingmovie from "./TodayTrendingmovie";
 import WeeklyTrendingmovie from "./WeeklyTrendingMovies";
 

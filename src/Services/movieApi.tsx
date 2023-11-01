@@ -67,7 +67,7 @@ export const fetchAllUsers = async () => {
 };
 
 //get datailes
-export const fetchDeatailes = async (id: number) => {
+export const fetchDeatailes = async (id: string |number) => {
   try {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
@@ -81,7 +81,7 @@ export const fetchDeatailes = async (id: number) => {
 };
 
 //get Video
-export const fetchVideo = async (movie_id: number) => {
+export const fetchVideo = async (movie_id: string |number) => {
   try {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${API_KEY}`
@@ -107,7 +107,7 @@ export const fetchSearch = async (query: string) => {
 };
 
 //Cast
-export const fetchCast = async (movieId: number) => {
+export const fetchCast = async (movieId: string | number) => {
   try {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`

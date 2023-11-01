@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { fetchPopularMovies } from "../../Services/movieApi";
 import { PopularMoviesResponse } from "../../Model/PopulMovies.model";
 import ProgressCard from "../ProgressCard/ProgressCard";

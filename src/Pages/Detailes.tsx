@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCast, fetchDeatailes, fetchVideo } from "../Services/movieApi";
 import dayjs from "dayjs";
 import ProgressCard from "../Components/ProgressCard/ProgressCard";
 import Navbar from "../Components/Navbar/Navbar";
 import { MovieDetailesResponse } from "../Model/MovieDetailes.model";
-import { AiFillCloseCircle, AiOutlineClose } from "react-icons/ai";
 import { CastResponse } from "../Model/Cast.model";
-import suhad from "../assets/suhad.jpg";
 
 const Details = () => {
   const [movieDetails, setMovieDetails] = useState<
@@ -15,28 +13,27 @@ const Details = () => {
   >();
   const [MovieCast, setMovieCast] = useState<CastResponse[]>([]);
   const [trailerVideo, setTrailerVideo] = useState<string>("");
-  const [ShowPosterimg, setShowPosterimg] = useState<boolean>(true);
 
   const { id } = useParams();
 
   useEffect(() => {
     const getMovieDetails = async () => {
-      const details = await fetchDeatailes(id);
-      const videos = await fetchVideo(id);
-      const cast = await fetchCast(id);
-      setMovieDetails(details);
-      setMovieCast(cast);
-      const trailer = videos.results.find(
-        (video: any) => video.type === "Trailer"
-      );
-      if (trailer) {
-        setTrailerVideo(trailer.key);
+      if (id) { // Check if id is defined
+        const details = await fetchDeatailes(id);
+        const videos = await fetchVideo(id);
+        const cast = await fetchCast(id);
+        setMovieDetails(details);
+        setMovieCast(cast);
+        const trailer = videos.results.find(
+          (video: any) => video.type === "Trailer"
+        );
+        if (trailer) {
+          setTrailerVideo(trailer.key);
+        }
       }
     };
     getMovieDetails();
   }, [id]);
-
-  console.log(MovieCast);
 
   const getImageUrl = (posterPath: string) => {
     return `https://image.tmdb.org/t/p/original/${posterPath}`;
@@ -54,11 +51,11 @@ const Details = () => {
                 alt=""
                 className="w-full h-64 sm:h-96 object-cover rounded-lg"
               />
-              <div className="absolute top-0 left-0 bottom-0 right-0 bg-gradient-to-r from-black/20 to-black z-10 flex items-center justify-center">
+              {/* <div className="absolute top-0 left-0 bottom-0 right-0 bg-gradient-to-r from-black/20 to-black z-10 flex items-center justify-center">
                 {ShowPosterimg && (
                   <div className="w-40 sm:w-52 lg:w-60 flex flex-col items-center"></div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="text-white text-center">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCompass, FaCalendarAlt } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsDot } from "react-icons/bs";
